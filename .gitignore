@@ -1,6 +1,5 @@
 target/
-
 .idea/
-
-YandexMail.iml
+*.iml
 .allure
+allure-results

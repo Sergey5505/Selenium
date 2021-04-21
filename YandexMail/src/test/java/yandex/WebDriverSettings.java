@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -17,20 +15,6 @@ public class WebDriverSettings {
 
     @Before
     public void setUp() throws MalformedURLException {
-        File batchFile = new File("src/main/resources/drivers/hub_node_start.bat");
-        ProcessBuilder processBuilder = new ProcessBuilder(batchFile.getAbsolutePath());
-        try {
-            processBuilder.start();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setBrowserName("chrome");
         driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
